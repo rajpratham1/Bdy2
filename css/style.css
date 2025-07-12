@@ -1,0 +1,430 @@
+/* --- Universal Styles --- */
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    /* We keep overflow-x hidden to prevent horizontal scrolling */
+    overflow-x: hidden; 
+    color: #333;
+    background-color: #fce4ec; /* Default background */
+    transition: background-color 0.5s ease-in-out;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5em;
+    color: #e91e63;
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    color: #6a1b9a;
+    margin-top: 15px;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.continue-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 30px;
+    background-color: #ff6f61;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.continue-btn:hover {
+    background-color: #e55e53;
+    transform: translateY(-3px);
+}
+
+/* --- Page 1: Landing Page & Music Controls --- */
+.page-1 {
+    background: linear-gradient(to bottom right, #ffdde1, #fcfcfc);
+    /* We set min-height to 100vh but allow scrolling if content overflows */
+    min-height: 100vh;
+    overflow-y: auto; 
+    position: relative; /* Ensure background animation works correctly */
+}
+
+.letter-page {
+    position: relative;
+    max-width: 700px;
+    margin: 50px auto; /* Centering content and allowing scrolling */
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 1.5s ease-out;
+    z-index: 10;
+}
+
+/* Page 1: Subtle Background Animation */
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: repeating-radial-gradient(
+        circle,
+        rgba(255, 107, 107, 0.1),
+        rgba(255, 107, 107, 0.1) 10px,
+        rgba(255, 255, 255, 0) 10px,
+        rgba(255, 255, 255, 0) 20px
+    );
+    animation: background-move 20s linear infinite;
+}
+
+@keyframes background-move {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
+}
+
+.surprise-text {
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 25px;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+    animation-delay: 2s;
+}
+
+.music-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.music-controls button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #e91e63;
+    transition: color 0.2s ease;
+}
+
+.music-controls button:hover {
+    color: #b71c1c;
+}
+
+.music-note {
+    font-size: 1.2em;
+    color: #e91e63;
+}
+
+/* Logo styling */
+.logo {
+    position: absolute;
+    width: 60px;
+    height: auto;
+    opacity: 0.8;
+    animation: pulse 2s infinite alternate;
+}
+
+.heart-logo {
+    top: 20px;
+    left: 30px;
+}
+
+.star-logo {
+    bottom: 20px;
+    right: 30px;
+    animation-delay: 0.5s;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); opacity: 0.8; }
+    to { transform: scale(1.05); opacity: 1; }
+}
+
+/* --- Page 2: Memories Page (Curved Gallery) --- */
+.page-2 {
+    background: linear-gradient(to top left, #ffebee, #fff3e0);
+}
+
+.curved-gallery-container {
+    perspective: 1000px;
+    position: relative;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.curved-gallery {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-out;
+    transform: rotateY(0deg);
+}
+
+.memory-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.5s ease-out, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: left;
+}
+
+.memory-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(1.03);
+}
+
+.memory-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.description {
+    padding: 15px 20px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+.description p {
+    font-size: 0.95em;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Gallery Navigation Buttons */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 15px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 10;
+    color: #e91e63;
+    border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.gallery-nav.prev {
+    left: 15%;
+}
+
+.gallery-nav.next {
+    right: 15%;
+}
+
+.gallery-nav:hover {
+    background-color: #ff6f61;
+    color: white;
+}
+
+/* --- Page 3: Celebration Page (Dynamic Animations) --- */
+.page-3 {
+    background: radial-gradient(circle at center, #fff9c4, #ffecb3);
+    overflow: hidden;
+}
+
+.confetti, .balloon, .sparkle, .star {
+    position: absolute;
+    animation-timing-function: linear;
+    pointer-events: none;
+}
+
+/* Confetti & Balloon (animations driven by JS) */
+.confetti {
+    background-color: red; /* Colors set by JS */
+    border-radius: 2px;
+    animation: confettiFall 5s linear infinite;
+}
+
+.balloon {
+    background-color: red; /* Colors set by JS */
+    width: 50px;
+    height: 70px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: floatUp 10s ease-out infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.7; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* --- Page 4 & 5 (Light Page & Dear Madam Ji) --- */
+.page-4 {
+    background: linear-gradient(to right, #f8f8f8, #e0f2f7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.page-5 {
+    background-color: #b71c1c; /* Deep, rich red */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.madam-ji-page {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    padding: 40px 60px;
+    color: #fff;
+    animation: fadeIn 2s ease-out;
+}
+
+.madam-ji-page h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.madam-ji-page p {
+    color: #f0f0f0;
+    text-align: justify;
+}
+
+/* --- Page 6: Final Tribute Page --- */
+.page-6 {
+    background: radial-gradient(circle at center, #3a0335, #0a010a);
+    color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.tribute-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    padding: 60px;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.tribute-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4em;
+    color: #ff91b1;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+.felt-moments-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #ddd;
+    text-align: justify;
+    margin-bottom: 25px;
+}
+
+.final-wish-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.final-wish {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5em;
+    color: #ffe0b2;
+    text-shadow: 0 0 15px #ffe0b2, 0 0 25px #ff69b4;
+    animation: pulseGlow 3s infinite ease-in-out;
+    margin-bottom: 20px;
+}
+
+.signature-line {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    color: #ff91b1;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); text-shadow: 0 0 15px #ffe0b2, 0 0 25px #ff69b4; }
+    50% { transform: scale(1.03); text-shadow: 0 0 20px #ffe0b2, 0 0 35px #ff69b4; }
+    100% { transform: scale(1); text-shadow: 0 0 15px #ffe0b2, 0 0 25px #ff69b4; }
+}
+
+/* Heart Animation Container & Styles */
+.heart-animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    /* Important: We rely on JS to create and position these elements */
+}
+
+.animated-heart {
+    position: absolute;
+    color: #ff1493;
+    font-size: 2em;
+    animation: floatHeart 10s linear infinite;
+    opacity: 0;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- General Animations & Responsive Design --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
